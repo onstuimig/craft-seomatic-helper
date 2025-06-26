@@ -1,0 +1,27 @@
+{# @var plugin \onstuimig\seomatichelper\SeomaticHelper #}
+{# @var settings \onstuimig\seomatichelper\models\Settings #}
+
+{% import '_includes/forms.twig' as forms %}
+
+{% macro configWarning(setting, file) -%}
+	{%- set configArray = craft.app.config.getConfigFromFile(file) -%}
+	{%- if configArray[setting] is defined -%}
+		{{- "This is being overridden by the `#{setting}` setting in the `config/#{file}.php` file." |raw }}
+	{%- else -%}
+		{{ false }}
+	{%- endif -%}
+{%- endmacro %}
+
+<h2>{{ 'SEOmatic Helper Settings'|t('seomatic-helper') }}</h2>
+
+{{ forms.booleanMenuField({
+	label: 'Remove Creator From JSON-LD' | t('seomatic-helper'),
+	instructions: 'Whether to remove the creator organization from the JSON-LD.' | t('seomatic-helper'),
+	id: 'removeCreatorFromJsonLd',
+	name: 'removeCreatorFromJsonLd',
+	includeEnvVars: true,
+	value: settings.removeCreatorFromJsonLd ?? false,
+	errors: settings.getErrors('removeCreatorFromJsonLd'),
+	warning: _self.configWarning('removeCreatorFromJsonLd', 'seomatic-helper'),
+	disabled: _self.configWarning('removeCreatorFromJsonLd', 'seomatic-helper') ? true : false,
+}) }}

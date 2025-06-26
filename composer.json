@@ -1,0 +1,50 @@
+{
+	"name": "onstuimig/craft-seomatic-helper",
+	"description": "Fixes for default SEOmatic setup",
+	"version": "1.0.0",
+	"type": "craft-plugin",
+	"license": "proprietary",
+	"support": {
+		"issues": "https://github.com/onstuimig/craft-seomatic-helper/issues?state=open",
+		"source": "https://github.com/onstuimig/craft-seomatic-helper",
+		"docs": "https://github.com/onstuimig/craft-seomatic-helper",
+		"rss": "https://github.com/onstuimig/craft-seomatic-helper/releases.atom"
+	},
+	"require": {
+		"php": ">=8.0.2",
+		"craftcms/cms": "^4.3.5||^5.0.0",
+		"nystudio107/craft-seomatic": "^4.0.0||^5.0.0"
+	},
+	"require-dev": {
+		"craftcms/ecs": "dev-main",
+		"craftcms/phpstan": "dev-main"
+	},
+	"autoload": {
+		"psr-4": {
+			"onstuimig\\seomatichelper\\": "src/"
+		}
+	},
+	"extra": {
+		"handle": "seomatic-helper",
+		"name": "SEOmatic Helper",
+		"developer": "Onstuimig",
+		"documentationUrl": "https://github.com/onstuimig/craft-seomatic-helper",
+		"class": "onstuimig\\seomatichelper\\SeomaticHelper"
+	},
+	"scripts": {
+		"check-cs": "ecs check --ansi",
+		"fix-cs": "ecs check --ansi --fix",
+		"phpstan": "phpstan --memory-limit=1G"
+	},
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "8.0.2"
+		},
+		"allow-plugins": {
+			"yiisoft/yii2-composer": true,
+			"craftcms/plugin-installer": true
+		}
+	}
+}
+
